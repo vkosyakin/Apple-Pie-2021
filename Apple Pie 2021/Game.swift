@@ -17,12 +17,12 @@ struct Game {
     var guessedWord: String {
         var wordToShow = ""
         for letter in word {
-            if guessedLetters.contains(Character(letter.lowercased())) {
-              wordToShow += String(letter)
+            if guessedLetters.contains(Character(letter.lowercased())) || letter == "-" || letter == " " {
+                wordToShow += String(letter)
             } else {
-              wordToShow += "_"
+                wordToShow += "_"
             }
-           }
+        }
         return wordToShow
     }
     
@@ -30,7 +30,7 @@ struct Game {
         let lowercasedLetter = Character(letter.lowercased())
         guessedLetters.append(lowercasedLetter)
         if !word.lowercased().contains(lowercasedLetter){
-        incorrectMovesRemaining -= 1
+            incorrectMovesRemaining -= 1
+        }
     }
-  }
 }
